@@ -3,6 +3,7 @@
 int main(int argc, char **argv)
 {
     printf("Hello World\n");
+    printf("Now live on GitHub!\n");
 
     for(int i = 0; i < argc; i++)
     {
