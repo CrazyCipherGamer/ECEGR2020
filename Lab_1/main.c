@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 void SizeOfVariables()
 {
@@ -12,7 +12,7 @@ void SizeOfVariables()
     long double ld;
     void *ptr;
 
-    printf("Char c has size: %d\n", sizeof(c));
+    printf("Char c has size: %d\n", sizeof(c));                    //Print statements to read off all the sizes of the different variable types in bytes.
     printf("Short s has size: %d\n", sizeof(s));
     printf("Int i has size: %d\n", sizeof(i));
     printf("Unsigned int ui has size: %d\n", sizeof(ui));
@@ -25,6 +25,7 @@ void SizeOfVariables()
 
 int IsLeapYear(int aYear)
 {
+    //Conditionals to check for the conditions of a leap year.
     if(aYear < 1752 && aYear > 0)
     {
         printf("The year entered is %d and it is not a leap year.\n", aYear);
@@ -54,6 +55,7 @@ int IsLeapYear(int aYear)
 
 int IsVowel(char aLetter)
 {
+    //Use the fact that ASCII can be represented as numbers to selectively eliminate non-alphabetic characters.
     if ((aLetter >= 0 && aLetter <= 64) || (aLetter >= 91 && aLetter <= 96) || (aLetter >= 123))
     {
         printf("Error: Non-alphabetic character\n");
@@ -91,11 +93,11 @@ void ReverseNumber(long aNumber)
     switch (isNegative)
     {
     case 1:
-        printf("Number: %d\tReversed: %d\n", aNumberCopy, -reversed_number);
+        printf("Number: %ld\tReversed: %ld\n", aNumberCopy, -reversed_number);
         break;
     
     default:
-        printf("Number: %d\tReversed: %d\n", aNumberCopy, reversed_number);
+        printf("Number: %ld\tReversed: %ld\n", aNumberCopy, reversed_number);
         break;
     }
 }
@@ -104,20 +106,20 @@ int main()
 {    
     char character;
     SizeOfVariables();
-    int listOfYears[] = {1750, 1800, 1900, 2000, 1904, 1908, 1996, 2018, 2020, 2024};
+    int listOfYears[] = {1750, 1800, 1900, 2000, 1904, 1908, 1996, 2018, 2020, 2024};   //Array of years to test.
 
-    for(int i = 0; i < sizeof(listOfYears)/sizeof(int); i++)
+    for(int i = 0; i < 10; i++)
     {
         IsLeapYear(listOfYears[i]);
     }
 
-    char *testString = "aibIOqE23$%";
+    char *testString = "aibIOqE23$%"; //Array of characters (string) to test the output of the function.
     for (int i = 0; i < 11; i++)
     {
-        IsVowel(testString[i]);
+        printf("%d\n", IsVowel(testString[i])); //Print statement to check whether the character was a vowel or not.
     }
 
-    long testNumbers[] = {-234, -100, 0, 123, 34, 234234, 729572};
+    long testNumbers[] = {-234, -103, 0, 1234, 34, 234234, 729572};     //Array to test numbers for the reverse number function.
     for (int i = 0; i < 7; i++)
     {
         ReverseNumber(testNumbers[i]);
