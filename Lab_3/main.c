@@ -52,12 +52,13 @@ void ReverseArray(void)
     int tempArray[10] = {0};
     for(int i = 0; i < 10; i++)
     {
-        tempArray[i] = theArray[9-i];
+        tempArray[i] = theArray[9-i];   
     }
-    for(int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++)
     {
         theArray[i] = tempArray[i];
     }
+    
 }
 
 Student* NewStudent(void)
@@ -135,21 +136,12 @@ Student** ImportStudentData(void)
     
     for(int i = 0; i < numStudents; ++i)
     {
-        int ID;
-        char firstName[30];
-        char lastName[30];
-        float GPA = 0.0f;
         studentArray[i] = (Student*)malloc(sizeof(Student));
 
-        fscanf(studentFile, "%d", &ID);
-        fscanf(studentFile, "%s", firstName);
-        fscanf(studentFile, "%s", lastName);
-        fscanf(studentFile, "%f", &GPA);
-
-        studentArray[i]->ID = ID;
-        strcpy(studentArray[i]->firstName, firstName);
-        strcpy(studentArray[i]->lastName, lastName);
-        studentArray[i]->GPA = GPA;
+        fscanf(studentFile, "%d", &(studentArray[i]->ID));
+        fscanf(studentFile, "%s", studentArray[i]->firstName);
+        fscanf(studentFile, "%s", studentArray[i]->lastName);
+        fscanf(studentFile, "%f", &(studentArray[i]->GPA));
 
         printf("ID of student %d is: %d\n", i+1, studentArray[i]->ID);
         printf("First name of student %d is: %s\n", i+1, studentArray[i]->firstName);
