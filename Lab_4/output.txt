@@ -1,12 +1,12 @@
-5
+3
+1113
+Harry
+Potter
+3.856000
 1112
 Nevil
 Longbottom
 3.456000
-1113
-Harry
-Potter
-3.200000
 1111
 Bob
 Smith

@@ -208,6 +208,7 @@ void RemoveByID(int ID)
         {
             head = prevStudent->next;
             free(prevStudent);
+            numStudents--;
             break;
         }
         //Case when the student to be removed is in the middle
@@ -215,6 +216,7 @@ void RemoveByID(int ID)
         {
             prevStudent->next = currentStudent->next;
             free(currentStudent);
+            numStudents--;
             break;
         }
         //Case when the student to be removed is at the end
@@ -222,12 +224,12 @@ void RemoveByID(int ID)
         {
             prevStudent->next = NULL;
             free(currentStudent);
+            numStudents--;
             break;
         }
         prevStudent = currentStudent;
         currentStudent = currentStudent->next;
     }
-    numStudents--;
 }
 
 //We find the student in the list and then update their info, connect the linked list as it should be and then just put the Student * for that student into InsertByGPA to put them in correctly in the list to never worry about resorting the entire linked list.
@@ -282,6 +284,7 @@ void UpdateByID(int ID)
 
             //Reinsert the student node
             InsertByGPA(nextStudent);
+            break;
         }
         //Case for student at the end
         if(nextStudent->ID == ID && nextStudent->next == NULL)
@@ -305,7 +308,8 @@ void UpdateByID(int ID)
         currentStudent = nextStudent;
         nextStudent = nextStudent->next;
     }
-    
+    //Error-correction
+    numStudents--;
 }
 
 
@@ -330,6 +334,7 @@ void InsertByGPA(Student* insertedStudent)
         {
             insertedStudent->next = currentStudent;
             head = insertedStudent;
+            numStudents++;
             break;
         }
         //Insertion at the middle
@@ -337,17 +342,19 @@ void InsertByGPA(Student* insertedStudent)
         {
             currentStudent->next = insertedStudent;
             insertedStudent->next = nextStudent;
+            numStudents++;
+            break;
         }
         //Insertion at the end
         if(nextStudent->GPA > insertedStudent->GPA)
         {
             nextStudent->next = insertedStudent;
+            numStudents++;
             break;
         }
         currentStudent = nextStudent;
         nextStudent = nextStudent->next;
     }
-    numStudents++;
 }
 
 void PrintStudents(void)
