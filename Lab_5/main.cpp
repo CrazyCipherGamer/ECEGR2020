@@ -56,6 +56,7 @@ Student::Student(const Student &student)
 
 Student::~Student()
 {
+    printf("Destructor called!\n");
     free(firstName);
     free(lastName);
 }
