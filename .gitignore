@@ -4,3 +4,5 @@
 /ECEGR2020.vcxproj
 /ECEGR2020.vcxproj.filters
 /ECEGR2020.vcxproj.user
+*.ilk
+*pdb
