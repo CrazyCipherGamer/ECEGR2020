@@ -9,12 +9,12 @@ class Student
         std::string firstName;
         std::string lastName;
         float GPA;
-        class Student *next;
+        Student *next;
     public:
         Student(void);
         Student(const Student &student);
         Student(int ID, std::string firstName, std::string lastName, float GPA);
-        ~Student(void);
+        ~Student(void){}
         void setID(int ID);
         int getID(void);
         void setGPA(float GPA);
@@ -23,16 +23,17 @@ class Student
         std::string getFirstName(void);
         void setLastName(std::string lastName);
         std::string getLastName(void);
+        Student* getNext();
+        void setNext(Student* stundent);
 };
 
 Student::Student()
 {
-    ID = 1688;
-    firstName = (char *)malloc(30);
-    lastName = (char *)malloc(30);
-    firstName = "Bob";
-    lastName = "Smith";
-    GPA = 2.0f;
+    ID = 0;
+    firstName = "";
+    lastName = "";
+    GPA = 0.0f;
+    next = nullptr;
 }
 
 Student::Student(int ID, std::string firstName, std::string lastName, float GPA)
@@ -41,6 +42,7 @@ Student::Student(int ID, std::string firstName, std::string lastName, float GPA)
     this->firstName = firstName;
     this->lastName = lastName;
     this->GPA = GPA;
+    next = nullptr;
 }
 
 Student::Student(const Student &student)
@@ -49,11 +51,7 @@ Student::Student(const Student &student)
     firstName = student.firstName;
     lastName = student.lastName;
     GPA = student.GPA;
-}
-
-Student::~Student()
-{
-    printf("Destructor called!\n");
+    next = student.next;
 }
 
 void Student::setID(int ID)
@@ -94,4 +92,14 @@ void Student::setLastName(std::string lastName)
 std::string Student::getLastName()
 {
     return this->lastName;
+}
+
+Student* Student::getNext(void)
+{
+    return next;
+}
+
+void Student::setNext(Student* student)
+{
+    next = student;
 }
